@@ -1,0 +1,99 @@
+<div class="row">
+<div class="col-2">
+	<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		<a  class="nav-link active" id="v-pills-DadosBasicos-tab" data-toggle="pill" href="#v-pills-DadosBasicos" role="tab" aria-controls="v-pills-DadosBasicos" aria-selected="true"><i class="fa fa-file"></i> Dados Basicos</a>
+<a  class="nav-link " id="v-pills-Outros-tab" data-toggle="pill" href="#v-pills-Outros" role="tab" aria-controls="v-pills-Outros" aria-selected="true"><i class="fa fa-bars"></i> Outros</a>
+<a *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' class="nav-link " id="v-pills-SampleDetail-tab" data-toggle="pill" href="#v-pills-SampleDetail" role="tab" aria-controls="v-pills-SampleDetail" aria-selected="true"><i class="fa fa-users"></i> Sample Detail</a>
+<a *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' class="nav-link " id="v-pills-SampleProduct-tab" data-toggle="pill" href="#v-pills-SampleProduct" role="tab" aria-controls="v-pills-SampleProduct" aria-selected="true"><i class="fa fa-tasks"></i> Sample Product</a>
+	</div>
+</div>
+<div class="col-10">
+	<div class="tab-content" id="v-pills-tabContent">
+		<div class="tab-pane fade show active" id="v-pills-DadosBasicos" role="tabpanel" aria-labelledby="v-pills-DadosBasicos-tab">
+	<div class="row">
+		  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.sampleId.label }}</label>
+      <select class='form-control'  name='sampleId' [(ngModel)]='vm.modelFilter.sampleId' datasource [dataitem]="'SampleStandart'" [fieldFilterName]="'Name'"></select>
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.name.label }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.name' name='name' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.valor.label }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.valor' name='valor' />
+    </div>
+  </section>
+	</div>
+</div>
+
+<div class="tab-pane fade show " id="v-pills-Outros" role="tabpanel" aria-labelledby="v-pills-Outros-tab">
+	<div class="row">
+		  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.telefone.label }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.telefone' name='telefone' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.cpf.label }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.cpf' name='cpf' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.datetime.label }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.datetime' name='datetime'datepicker />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.sampleTypeId.label }}</label>
+      <select class='form-control'  name='sampleTypeId' [(ngModel)]='vm.modelFilter.sampleTypeId' datasource [dataitem]="'SampleType'" [fieldFilterName]="'Name'"></select>
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.age.label }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.age' name='age' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos.category.label }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.category' name='category' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <label>{{ vm.infos.ativo.label }}</label>
+<div class='form-group'>
+    <label class='radio-inline'><input type='radio' name='ativo' [(ngModel)]='vm.modelFilter.ativo'> Todos</label>
+    <label class='radio-inline'><input type='radio' name='ativo' [(ngModel)]='vm.modelFilter.ativo' value='true'> Sim</label>
+    <label class='radio-inline'><input type='radio' name='ativo' [(ngModel)]='vm.modelFilter.ativo' value='false'> Não</label>
+</div>
+  </section>
+	</div>
+</div>
+
+<div class="tab-pane fade show " id="v-pills-SampleDetail" role="tabpanel" aria-labelledby="v-pills-SampleDetail-tab">
+	<div class="m-0 p-0">
+		<app-sampledetail [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' ></app-sampledetail>
+	</div>
+</div>
+
+<div class="tab-pane fade show " id="v-pills-SampleProduct" role="tabpanel" aria-labelledby="v-pills-SampleProduct-tab">
+	<div class="m-0 p-0">
+		<app-sampleproduct [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' ></app-sampleproduct>
+	</div>
+</div>
+
+	</div>
+</div>
+
+</div>

@@ -32,14 +32,22 @@ namespace Seed.CrossCuting
 
         private static string GetRole(Dictionary<string, object> _claims)
         {
-            return _claims.Where(_ => _.Key == "role").SingleOrDefault().Value.ToString();
+            var role = _claims.Where(_ => _.Key == "role").SingleOrDefault();
+            return role.Value.IsNotNull() ? role.Value.ToString() : "--";
         }
 
         public static Dictionary<string, object> ClaimsForAdmin()
         {
             var tools = new List<dynamic>
             {
-                new { Icon = "fa fa-edit", Name = "Tool", Route = "#/Url" },
+                new { Icon = "fa fa-edit", Name = "SampleStandart", Route = "/samplestandart" },
+                new { Icon = "fa fa-edit", Name = "Sample", Route = "/sample" },
+                new { Icon = "fa fa-edit", Name = "SampleDetail", Route = "/sampledetail" },
+                new { Icon = "fa fa-edit", Name = "SampleType", Route = "/sampletype" },
+                new { Icon = "fa fa-edit", Name = "Product", Route = "/product" },
+                new { Icon = "fa fa-edit", Name = "SampleDash", Route = "/sampledash" },
+                new { Icon = "fa fa-edit", Name = "SampleProduct", Route = "/sampleproduct" },
+
             };
             var _toolsForAdmin = JsonConvert.SerializeObject(tools);
             return new Dictionary<string, object>

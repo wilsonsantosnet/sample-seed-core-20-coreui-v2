@@ -1,0 +1,50 @@
+<dl>
+    <dt>{{ vm.infos.descricao.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.descricao" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.tags.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.tags" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.telefone.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.telefone" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.cpf.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.cpf" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.sampleId.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.sampleId" [format]="'instance'" [tag]="'span'"  [instance]="'SampleStandart'"  [key]="'SampleId'"></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.datetime.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.datetime" [format]="'DateTime?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.name.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.name" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.sampleTypeId.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.sampleTypeId" [format]="'instance'" [tag]="'span'"  [instance]="'SampleType'"  [key]="'SampleTypeId'"></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.age.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.age" [format]="'int?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.category.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.category" [format]="'int?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.valor.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.valor" [format]="'decimal?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos.ativo.label }}:</dt>
+    <dd><bind-custom [model]="vm.details.ativo" [format]="'bool?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+</dl> 

@@ -39,11 +39,11 @@ namespace Sso.Server.Api
                 .GetSection("ConfigConnectionString:Default").Value;
 
 
-            services.AddIdentityServer();
-                //.AddSigningCredential(GetRSAParameters())
-                //.AddInMemoryApiResources(Config.GetApiResources())
-                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
-                //.AddInMemoryClients(Config.GetClients(Configuration.GetSection("ConfigSettings").Get<ConfigSettingsBase>()));
+            services.AddIdentityServer()
+                .AddSigningCredential(GetRSAParameters())
+                .AddInMemoryApiResources(Config.GetApiResources())
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryClients(Config.GetClients(Configuration.GetSection("ConfigSettings").Get<ConfigSettingsBase>()));
 
             //for clarity of the next piece of code
             services.AddScoped<CurrentUser>();

@@ -44,6 +44,8 @@ namespace Seed.Gen
                 MakeFront = true,
                 AlertNotFoundTable = true,
                 MakeToolsProfile = true,
+                TwoCols = true,
+                DisabledCamelCasingException = true,
 
                 Routes = new List<RouteConfig> {
                     new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: './main/sampledash/sampledash.module#SampleDashModule' }" }
@@ -51,16 +53,57 @@ namespace Seed.Gen
 
                 TableInfo = new UniqueListTableInfo
                 {
-
+                   new TableInfo { TableName = "SampleStandart", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true },
                    new TableInfo { TableName = "Sample", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true , FieldsConfig =  new List<FieldConfig>{
                        new FieldConfig
                        {
+                           Name = "SampleId",
+                           Group = new Group("Dados Basicos","fa fa-file"),
+                           ShowFieldIsKey = true,
+                           GroupComponent = new GroupComponent("Sample Standart","fa fa-plus-circle","<app-samplestandart></app-samplestandart>","samplestandart"),
+                           Attributes = new List<string>{ "[datafilters]=\"{AttributeBehavior:'withoutchild'}\"" },
+                           Order =1
+
+                       },
+                       new FieldConfig
+                       {
+                           Name = "Name",
+                           Group = new Group("Dados Basicos","fa fa-file"),
+                           Order =2
+                       },
+                        new FieldConfig
+                        {
                            Name = "Valor",
-                           Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
-                       }
-                   } },
-                   new TableInfo { TableName = "SampleType", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true},
+                           Group = new Group("Dados Basicos","fa fa-file"),
+                           Attributes = new List<string>{"maskm" },
+                           Order =3
+
+                        }
+
+                   },
+                   GroupComponent = new List<GroupComponent> {
+                    new GroupComponent("Sample Detail","fa fa-users","<app-sampledetail [parentIdValue]='vm.model.sampleId' [parentIdField]=\"'sampleId'\" [isParent]=\"'true'\" <#fieldItemsNavHeadShow#> ></app-sampledetail>"),
+                    new GroupComponent("Sample Product","fa fa-tasks","<app-sampleproduct [parentIdValue]='vm.model.sampleId' [parentIdField]=\"'sampleId'\" [isParent]=\"'true'\" <#fieldItemsNavHeadShow#> ></app-sampleproduct>"),
+                    },
+                   },
+                   new TableInfo { TableName = "SampleDetail", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true, },
+                   new TableInfo { TableName = "SampleType", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true, },
+                   new TableInfo { TableName = "Product", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true, },
                    new TableInfo { ClassName = "SampleDash", MakeFront = true, MakeFrontBasic = true , Scaffold = false, UsePathStrategyOnDefine = false },
+                   new TableInfo { TableName = "SampleProduct", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true , FieldsConfig = new List<FieldConfig>
+                   {
+                       new FieldConfig {
+                           Name = "sampleId",
+                           ShowFieldIsKey = true
+                       },
+                       new FieldConfig {
+                           Name = "productId",
+                           ShowFieldIsKey = true,
+                           ColSize = 12
+
+                       }
+
+                   } },
 
                 }
             };
