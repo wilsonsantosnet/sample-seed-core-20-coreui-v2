@@ -60,6 +60,7 @@ namespace Seed.Gen
                            Name = "SampleId",
                            Group = new Group("Dados Basicos","fa fa-file"),
                            ShowFieldIsKey = true,
+                           RelationOneToOne = true,
                            GroupComponent = new GroupComponent("Sample Standart","fa fa-plus-circle","<app-samplestandart></app-samplestandart>","samplestandart"),
                            Attributes = new List<string>{ "[datafilters]=\"{AttributeBehavior:'withoutchild'}\"" },
                            Order =1
