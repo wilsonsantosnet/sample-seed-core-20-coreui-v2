@@ -1,4 +1,4 @@
-﻿import { Injectable, EventEmitter } from '@angular/core'
+import { Injectable, EventEmitter } from '@angular/core'
 import { Routes } from '@angular/router';
 import { CacheService } from './common/services/cache.service';
 import { ECacheType } from './common/type-cache.enum';

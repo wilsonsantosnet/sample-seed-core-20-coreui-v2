@@ -59,9 +59,7 @@ export class SampleProductComponent extends ComponentBase implements OnInit, OnD
             this.updateCulture(culture);
         });
 
-        if (this._navigatioModal)
-            LocationHistoryService.saveLocal("sampleproduct");
-
+    
         this.vm.isParent = this.isParent;
         this.vm.ParentIdField = this.parentIdField;
     }
@@ -114,7 +112,7 @@ export class SampleProductComponent extends ComponentBase implements OnInit, OnD
         if (this.parentIdValue)
             this.vm.model[this.parentIdField] = this.parentIdValue;
 
-        this.navigateStrategy(this.saveModal, this.router, "/sampleproduct/create");
+        this.navigateStrategy(this.vm, this.saveModal, this.router, "/sampleproduct/create");
     }
 
     public onEdit(model: any) {
@@ -125,8 +123,8 @@ export class SampleProductComponent extends ComponentBase implements OnInit, OnD
             newModel = { sampleId: model.sampleId, productId: model.productId }
         }
 
-        if (!this._navigatioModal) {
-            this.navigateStrategy(this.editModal, this.router, "/sampleproduct/edit/" + newModel.id);
+        if (!this.vm.navigationModal) {
+            this.navigateStrategy(this.vm, this.editModal, this.router, "/sampleproduct/edit/" + newModel.id);
         }
         else {
             this.sampleProductService.get(newModel).subscribe((result) => {
@@ -169,8 +167,8 @@ export class SampleProductComponent extends ComponentBase implements OnInit, OnD
             newModel = { sampleId: model.sampleId, productId: model.productId }
         }
 		
-        if (!this._navigatioModal) {
-            this.navigateStrategy(this.editModal, this.router, "/sampleproduct/details/" + newModel.id);
+        if (!this.vm.navigationModal) {
+            this.navigateStrategy(this.vm, this.editModal, this.router, "/sampleproduct/details/" + newModel.id);
         }
         else {
             this.sampleProductService.get(newModel).subscribe((result) => {

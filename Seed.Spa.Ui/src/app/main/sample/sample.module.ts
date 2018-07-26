@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -27,37 +27,37 @@ import { SampleServiceFields } from './sample.service.fields';
 
 import { ApiService } from '../../common/services/api.service';
 import { CommonSharedModule } from '../../common/common-shared.module';
-import { SampleDetailModule } from '../sampledetail/sampledetail.module';
-import { SampleProductModule } from '../sampleproduct/sampleproduct.module';
-import { SampleStandartModule } from '../samplestandart/samplestandart.module';
+import { SampleStandartModule} from '../samplestandart/samplestandart.module'
+import { SampleDetailModule} from '../sampledetail/sampledetail.module'
+import { SampleProductModule} from '../sampleproduct/sampleproduct.module'
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ModalModule.forRoot(),
-    CommonSharedModule,
-    SampleRoutingModule,
-    SamplePrintModule,
-    SampleDetailModule,
-    SampleProductModule,
-    SampleStandartModule,
-  ],
-  declarations: [
-    SampleComponent,
-    SampleContainerFilterComponent,
-    SampleFieldFilterComponent,
-    SampleEditComponent,
-    SampleCreateComponent,
-    SampleDetailsComponent,
-    SampleFieldCreateComponent,
-    SampleFieldEditComponent,
-    SampleContainerCreateComponent,
-    SampleContainerEditComponent
-  ],
-  providers: [SampleService, SampleServiceFields, ApiService],
-  exports: [SampleComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ModalModule.forRoot(),
+        CommonSharedModule,
+        SampleRoutingModule,
+        SamplePrintModule,
+        SampleStandartModule,
+        SampleDetailModule,
+        SampleProductModule,
+    ],
+    declarations: [
+        SampleComponent,
+        SampleContainerFilterComponent,
+        SampleFieldFilterComponent,
+        SampleEditComponent,
+        SampleCreateComponent,
+        SampleDetailsComponent,
+        SampleFieldCreateComponent,
+        SampleFieldEditComponent,
+        SampleContainerCreateComponent,
+        SampleContainerEditComponent
+    ],
+    providers: [SampleService,SampleServiceFields, ApiService],
+	exports: [SampleComponent, SampleEditComponent, SampleCreateComponent]
 })
 export class SampleModule {
 

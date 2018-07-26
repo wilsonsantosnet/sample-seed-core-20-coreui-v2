@@ -53,14 +53,61 @@ namespace Seed.Gen
 
                 TableInfo = new UniqueListTableInfo
                 {
-                   new TableInfo { TableName = "SampleStandart", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true },
-                   new TableInfo { TableName = "Sample", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true , FieldsConfig =  new List<FieldConfig>{
+                   new TableInfo().FromTable("SampleStandart").MakeBack().MakeFront(),
+
+                   new TableInfo().FromTable("Sample")
+                    .MakeBack()
+                    .MakeFront()
+                    .AndConfigureThisFields(ConfigFieldsSample())
+                    .AndConfigureThisGroups(ConfigGroupSample()),
+
+                   new TableInfo().FromTable("SampleDetail").MakeBack().MakeFront(),
+                   new TableInfo().FromTable("SampleType").MakeBack().MakeFront(),
+                   new TableInfo().FromTable("Product").MakeBack().MakeFront(),
+                   new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
+
+                   new TableInfo().FromTable("SampleProduct")
+                    .MakeBack()
+                    .MakeFront()
+                    .AndConfigureThisFields(ConfigFieldSampleProduct())
+                }
+            };
+        }
+
+        private static List<FieldConfig> ConfigFieldSampleProduct()
+        {
+            return new List<FieldConfig>
+                   {
+                       new FieldConfig {
+                           Name = "sampleId",
+                           ShowFieldIsKey = true
+                       },
+                       new FieldConfig {
+                           Name = "productId",
+                           ShowFieldIsKey = true,
+                           ColSize = 12
+
+                       }
+            };
+        }
+
+        private static List<GroupComponent> ConfigGroupSample()
+        {
+            return new List<GroupComponent> {
+                new GroupComponent("Sample Detail","fa fa-users","app-sampledetail","SampleDetail").MakeTagToGroup("sampleId"),
+                new GroupComponent("Sample Product","fa fa-tasks","app-sampleproduct","SampleProduct").MakeTagToGroup("sampleId"),
+            };
+        }
+
+        private static List<FieldConfig> ConfigFieldsSample()
+        {
+            return new List<FieldConfig> {
                        new FieldConfig
                        {
                            Name = "SampleId",
                            Group = new Group("Dados Basicos","fa fa-file"),
                            ShowFieldIsKey = true,
-                           GroupComponent = new GroupComponent("Sample Standart","fa fa-plus-circle","<app-samplestandart></app-samplestandart>","samplestandart"),
+                           GroupComponent = new GroupComponent("Sample Standart","fa fa-plus-circle","app-samplestandart-create","SampleStandart",GroupComponent.EModal.Basic).MakeTagToModal(),
                            Attributes = new List<string>{ "[datafilters]=\"{AttributeBehavior:'withoutchild'}\"" },
                            Order =1
 
@@ -80,35 +127,8 @@ namespace Seed.Gen
 
                         }
 
-                   },
-                   GroupComponent = new List<GroupComponent> {
-                    new GroupComponent("Sample Detail","fa fa-users","<app-sampledetail [parentIdValue]='vm.model.sampleId' [parentIdField]=\"'sampleId'\" [isParent]=\"'true'\" <#fieldItemsNavHeadShow#> ></app-sampledetail>"),
-                    new GroupComponent("Sample Product","fa fa-tasks","<app-sampleproduct [parentIdValue]='vm.model.sampleId' [parentIdField]=\"'sampleId'\" [isParent]=\"'true'\" <#fieldItemsNavHeadShow#> ></app-sampleproduct>"),
-                    },
-                   },
-                   new TableInfo { TableName = "SampleDetail", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true, },
-                   new TableInfo { TableName = "SampleType", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true, },
-                   new TableInfo { TableName = "Product", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true, },
-                   new TableInfo { ClassName = "SampleDash", MakeFront = true, MakeFrontBasic = true , Scaffold = false, UsePathStrategyOnDefine = false },
-                   new TableInfo { TableName = "SampleProduct", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true , FieldsConfig = new List<FieldConfig>
-                   {
-                       new FieldConfig {
-                           Name = "sampleId",
-                           ShowFieldIsKey = true
-                       },
-                       new FieldConfig {
-                           Name = "productId",
-                           ShowFieldIsKey = true,
-                           ColSize = 12
-
-                       }
-
-                   } },
-
-                }
-            };
+                   };
         }
-
 
 
         public IEnumerable<Context> GetConfigContext()

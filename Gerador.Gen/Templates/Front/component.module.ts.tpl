@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
@@ -27,6 +27,7 @@ import { <#className#>ServiceFields } from './<#classNameLowerAndSeparator#>.ser
 
 import { ApiService } from '../../common/services/api.service';
 import { CommonSharedModule } from '../../common/common-shared.module';
+<#groupComponentModulesImport#>
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         ModalModule.forRoot(),
         CommonSharedModule,
         <#className#>RoutingModule,
-        <#className#>PrintModule
+        <#className#>PrintModule,
+<#groupComponentModules#>
     ],
     declarations: [
         <#className#>Component,
@@ -51,7 +53,7 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         <#className#>ContainerEditComponent
     ],
     providers: [<#className#>Service,<#className#>ServiceFields, ApiService],
-	exports: [<#className#>Component]
+	exports: [<#className#>Component, <#className#>EditComponent, <#className#>CreateComponent]
 })
 export class <#className#>Module {
 

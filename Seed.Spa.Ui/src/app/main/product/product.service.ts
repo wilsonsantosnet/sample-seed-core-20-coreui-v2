@@ -41,7 +41,8 @@ export class ProductService extends ServiceBase {
             generalInfo: this.mainService.getInfos(),
             form: this._form,
             masks: this.masksConfig(),
-            manterTelaAberta : false
+            manterTelaAberta : false,
+            navigationModal: true
         });
     }
 

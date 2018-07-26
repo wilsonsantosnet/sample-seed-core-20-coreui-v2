@@ -13,19 +13,19 @@
 	<div class="row">
 		  <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.sampleId.label }}</label>
+      <label>{{ vm.infos | traduction:'sampleId'}}</label>
       <select class='form-control'  name='sampleId' [(ngModel)]='vm.modelFilter.sampleId' datasource [dataitem]="'SampleStandart'" [fieldFilterName]="'Name'"></select>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.name.label }}</label>
+      <label>{{ vm.infos | traduction:'name' }}</label>
       <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.name' name='name' />
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.valor.label }}</label>
+      <label>{{ vm.infos | traduction:'valor' }}</label>
       <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.valor' name='valor' />
     </div>
   </section>
@@ -36,42 +36,42 @@
 	<div class="row">
 		  <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.telefone.label }}</label>
+      <label>{{ vm.infos | traduction:'telefone' }}</label>
       <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.telefone' name='telefone' />
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.cpf.label }}</label>
+      <label>{{ vm.infos | traduction:'cpf' }}</label>
       <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.cpf' name='cpf' />
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.datetime.label }}</label>
+      <label>{{ vm.infos | traduction:'datetime' }}</label>
       <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.datetime' name='datetime'datepicker />
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.sampleTypeId.label }}</label>
+      <label>{{ vm.infos | traduction:'sampleTypeId'}}</label>
       <select class='form-control'  name='sampleTypeId' [(ngModel)]='vm.modelFilter.sampleTypeId' datasource [dataitem]="'SampleType'" [fieldFilterName]="'Name'"></select>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.age.label }}</label>
+      <label>{{ vm.infos | traduction:'age' }}</label>
       <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.age' name='age' />
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.category.label }}</label>
+      <label>{{ vm.infos | traduction:'category' }}</label>
       <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.category' name='category' />
     </div>
   </section>
   <section class="col-md-6">
-    <label>{{ vm.infos.ativo.label }}</label>
+    <label>{{ vm.infos | traduction:'ativo' }}</label>
 <div class='form-group'>
     <label class='radio-inline'><input type='radio' name='ativo' [(ngModel)]='vm.modelFilter.ativo'> Todos</label>
     <label class='radio-inline'><input type='radio' name='ativo' [(ngModel)]='vm.modelFilter.ativo' value='true'> Sim</label>
@@ -83,13 +83,13 @@
 
 <div class="tab-pane fade show " id="v-pills-SampleDetail" role="tabpanel" aria-labelledby="v-pills-SampleDetail-tab">
 	<div class="m-0 p-0">
-		<app-sampledetail [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' ></app-sampledetail>
+		<app-sampledetail [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async'  ></app-sampledetail>
 	</div>
 </div>
 
 <div class="tab-pane fade show " id="v-pills-SampleProduct" role="tabpanel" aria-labelledby="v-pills-SampleProduct-tab">
 	<div class="m-0 p-0">
-		<app-sampleproduct [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' ></app-sampleproduct>
+		<app-sampleproduct [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async'  ></app-sampleproduct>
 	</div>
 </div>
 

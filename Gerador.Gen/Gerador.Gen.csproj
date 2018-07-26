@@ -475,6 +475,9 @@
     <None Include="Templates\Front\field-makeselect-on-change.tpl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Templates\Front\field.component.group.basic.tpl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\Front\field.nav.tab.head.item.tpl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

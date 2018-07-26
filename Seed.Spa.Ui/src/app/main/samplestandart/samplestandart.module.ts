@@ -28,6 +28,7 @@ import { SampleStandartServiceFields } from './samplestandart.service.fields';
 import { ApiService } from '../../common/services/api.service';
 import { CommonSharedModule } from '../../common/common-shared.module';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -36,7 +37,8 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         ModalModule.forRoot(),
         CommonSharedModule,
         SampleStandartRoutingModule,
-        SampleStandartPrintModule
+        SampleStandartPrintModule,
+
     ],
     declarations: [
         SampleStandartComponent,
@@ -51,7 +53,7 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         SampleStandartContainerEditComponent
     ],
     providers: [SampleStandartService,SampleStandartServiceFields, ApiService],
-	exports: [SampleStandartComponent]
+	exports: [SampleStandartComponent, SampleStandartEditComponent, SampleStandartCreateComponent]
 })
 export class SampleStandartModule {
 

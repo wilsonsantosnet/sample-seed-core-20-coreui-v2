@@ -59,9 +59,7 @@ export class SampleComponent extends ComponentBase implements OnInit, OnDestroy 
             this.updateCulture(culture);
         });
 
-        if (this._navigatioModal)
-            LocationHistoryService.saveLocal("sample");
-
+    
         this.vm.isParent = this.isParent;
         this.vm.ParentIdField = this.parentIdField;
     }
@@ -114,7 +112,7 @@ export class SampleComponent extends ComponentBase implements OnInit, OnDestroy 
         if (this.parentIdValue)
             this.vm.model[this.parentIdField] = this.parentIdValue;
 
-        this.navigateStrategy(this.saveModal, this.router, "/sample/create");
+        this.navigateStrategy(this.vm, this.saveModal, this.router, "/sample/create");
     }
 
     public onEdit(model: any) {
@@ -125,8 +123,8 @@ export class SampleComponent extends ComponentBase implements OnInit, OnDestroy 
             newModel = { id: model.sampleId }
         }
 
-        if (!this._navigatioModal) {
-            this.navigateStrategy(this.editModal, this.router, "/sample/edit/" + newModel.id);
+        if (!this.vm.navigationModal) {
+            this.navigateStrategy(this.vm, this.editModal, this.router, "/sample/edit/" + newModel.id);
         }
         else {
             this.sampleService.get(newModel).subscribe((result) => {
@@ -169,8 +167,8 @@ export class SampleComponent extends ComponentBase implements OnInit, OnDestroy 
             newModel = { id: model.sampleId }
         }
 		
-        if (!this._navigatioModal) {
-            this.navigateStrategy(this.editModal, this.router, "/sample/details/" + newModel.id);
+        if (!this.vm.navigationModal) {
+            this.navigateStrategy(this.vm, this.editModal, this.router, "/sample/details/" + newModel.id);
         }
         else {
             this.sampleService.get(newModel).subscribe((result) => {

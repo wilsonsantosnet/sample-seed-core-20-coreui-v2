@@ -28,6 +28,7 @@ import { SampleTypeServiceFields } from './sampletype.service.fields';
 import { ApiService } from '../../common/services/api.service';
 import { CommonSharedModule } from '../../common/common-shared.module';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -36,7 +37,8 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         ModalModule.forRoot(),
         CommonSharedModule,
         SampleTypeRoutingModule,
-        SampleTypePrintModule
+        SampleTypePrintModule,
+
     ],
     declarations: [
         SampleTypeComponent,
@@ -51,7 +53,7 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         SampleTypeContainerEditComponent
     ],
     providers: [SampleTypeService,SampleTypeServiceFields, ApiService],
-	exports: [SampleTypeComponent]
+	exports: [SampleTypeComponent, SampleTypeEditComponent, SampleTypeCreateComponent]
 })
 export class SampleTypeModule {
 

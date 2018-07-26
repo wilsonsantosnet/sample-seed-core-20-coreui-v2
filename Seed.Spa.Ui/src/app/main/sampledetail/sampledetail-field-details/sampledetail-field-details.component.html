@@ -1,21 +1,21 @@
 <dl>
-    <dt>{{ vm.infos.name.label }}:</dt>
+    <dt>{{ vm.infos | traduction: 'name' }}:</dt>
     <dd><bind-custom [model]="vm.details.name" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
  
 
-    <dt>{{ vm.infos.descricao.label }}:</dt>
+    <dt>{{ vm.infos | traduction: 'descricao' }}:</dt>
     <dd><bind-custom [model]="vm.details.descricao" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
  
 
-    <dt>{{ vm.infos.data.label }}:</dt>
+    <dt>{{ vm.infos | traduction: 'data' }}:</dt>
     <dd><bind-custom [model]="vm.details.data" [format]="'DateTime?'" [tag]="'span'" ></bind-custom></dd>
  
 
-    <dt>{{ vm.infos.sampleDetailId.label }}:</dt>
+    <dt>{{ vm.infos | traduction: 'sampleDetailId' }}:</dt>
     <dd><bind-custom [model]="vm.details.sampleDetailId" [format]="'int'" [tag]="'span'" ></bind-custom></dd>
  
 
-    <dt>{{ vm.infos.sampleId.label }}:</dt>
+    <dt>{{ vm.infos | traduction: 'sampleId' }}:</dt>
     <dd><bind-custom [model]="vm.details.sampleId" [format]="'instance'" [tag]="'span'"  [instance]="'Sample'"  [key]="'SampleId'"></bind-custom></dd>
  
 

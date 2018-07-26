@@ -9,14 +9,14 @@
           <small class="text-muted">{{ vm.actionDescription }}</small>
         </div>
         <div class="col text-right">
-          <a *ngIf="_showBtnBack" class="btn py-0" href="javascript:history.back()" title="{{vm.generalInfo.voltar.label}}">
-            <span class="fa fa-arrow-left" aria-hidden="true"></span> {{vm.generalInfo.voltar.label}}
+          <a *ngIf="_showBtnBack" class="btn py-0" href="javascript:history.back()" title="{{vm.generalInfo | traduction:'voltar'}}">
+            <span class="fa fa-arrow-left" aria-hidden="true"></span> {{vm.generalInfo | traduction:'voltar'}}
           </a>
-          <a *ngIf="_showBtnFilter" class="btn py-0" (click)="onShowFilter()" title="{{vm.generalInfo.filtro.label}}">
-            <span class="fa fa-filter" aria-hidden="true"></span> {{vm.generalInfo.filtro.label}}
+          <a *ngIf="_showBtnFilter" class="btn py-0" (click)="onShowFilter()" title="{{vm.generalInfo | traduction:'filtro'}}">
+            <span class="fa fa-filter" aria-hidden="true"></span> {{vm.generalInfo | traduction:'filtro'}}
           </a>
-          <a *ngIf="_showBtnNew" class="btn py-0" (click)="onCreate()" title="{{vm.generalInfo.novoItem.label}}">
-            <span class="fa fa-plus" aria-hidden="true"></span> {{vm.generalInfo.novoItem.label}}
+          <a *ngIf="_showBtnNew" class="btn py-0" (click)="onCreate()" title="{{vm.generalInfo | traduction:'novoItem'}}">
+            <span class="fa fa-plus" aria-hidden="true"></span> {{vm.generalInfo | traduction:'novoItem'}}
           </a>
         </div>
       </div>
@@ -35,7 +35,7 @@
     <form #formFilter="ngForm" (ngSubmit)="onFilter(vm.modelFilter)">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">{{vm.generalInfo.filtro.label}}</h5>
+          <h5 class="modal-title">{{vm.generalInfo | traduction:'filtro'}}</h5>
           <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -46,15 +46,15 @@
         <div class="modal-footer">
           <button class="btn btn-default" type="button" (click)="onCancel()">
             <i class="icon-close icons"></i>
-            {{vm.generalInfo.cancelar.label}}
+            {{vm.generalInfo| traduction:'cancelar'}}
           </button>
           <button class="btn btn-default" type="button" (click)="onClearFilter()">
             <i class="icon-reload icons"></i>
-            {{vm.generalInfo.limpar.label}}
+            {{vm.generalInfo| traduction:'limpar'}}
           </button>
           <button class="btn btn-success" type="submit">
             <span class="fa fa-search"></span>
-            {{vm.generalInfo.filtrar.label}}
+            {{vm.generalInfo | traduction:'filtrar'}}
           </button>
         </div>
       </div>
@@ -82,11 +82,11 @@
           </div>
           <button class="btn btn-default" type="button" (click)="onCancel()">
 			<i class="icon-close icons"></i>
-			{{vm.generalInfo.cancelar.label}}
+			{{vm.generalInfo| traduction:'cancelar'}}
 		  </button>
           <button type="submit" class="btn btn-success " [disabled]="vm != null && vm.form.invalid">
 			<i class="icon-check icons"></i>
-			{{vm.generalInfo.salvar.label}}
+			{{vm.generalInfo | traduction:'salvar'}}
 		  </button>
         </div>
       </form>
@@ -114,11 +114,11 @@
           </div>
 		  <button class="btn btn-default" type="button" (click)="onCancel()">
 			<i class="icon-close icons"></i>
-			{{vm.generalInfo.cancelar.label}}
+			{{vm.generalInfo| traduction:'cancelar'}}
 		  </button>
           <button type="submit" class="btn btn-success " [disabled]="vm != null && vm.form.invalid">
 			<i class="icon-check icons"></i>
-			{{vm.generalInfo.salvar.label}}
+			{{vm.generalInfo | traduction:'salvar'}}
 		  </button>        
 		 </div>
       </form>
@@ -141,7 +141,7 @@
       <div class="modal-footer">
         <button class="btn btn-default " type="button" (click)="onCancel()">
 			<i class="icon-close icons"></i>
-			{{vm.generalInfo.cancelar.label}}
+			{{vm.generalInfo| traduction:'cancelar'}}
 		</button>
       </div>
     </div>

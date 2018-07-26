@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -6,6 +6,7 @@ import { ViewModel } from '../../../common/model/viewmodel';
 import { SampleDetailService } from '../sampledetail.service';
 import { LocationHistoryService } from '../../../common/services/location.history';
 import { ComponentBase } from "../../../common/components/component.base";
+import { GlobalService, NotificationParameters } from '../../../global.service';
 
 @Component({
     selector: 'app-sampledetail-create',
@@ -15,6 +16,12 @@ import { ComponentBase } from "../../../common/components/component.base";
 export class SampleDetailCreateComponent extends ComponentBase implements OnInit, OnDestroy {
 
     @Input() vm: ViewModel<any>;
+    @Input() parentIdValue: any;
+    @Input() parentIdField: string;
+    @Input() isParent: boolean;
+    @Output() saveEnd = new EventEmitter<any>();
+    @Output() backEnd = new EventEmitter<any>();
+
  
     constructor(private sampleDetailService: SampleDetailService, private route: ActivatedRoute, private router: Router, private ref: ChangeDetectorRef) {
         super();
@@ -38,11 +45,17 @@ export class SampleDetailCreateComponent extends ComponentBase implements OnInit
 
     onSave(model : any) {
 
-        this.sampleDetailService.save(model).subscribe((result) => {
+            this.sampleDetailService.save(model).subscribe((result) => {
             this.vm.model.sampleDetailId = result.data.sampleDetailId;
+            this.saveEnd.emit();
             if (!this.vm.manterTelaAberta)
                 this.router.navigate([LocationHistoryService.getLastNavigation()])
         });
+    }
+
+    onBack(e: any) {
+        e.preventDefault();
+        this.backEnd.emit();
     }
 
     ngOnDestroy() {

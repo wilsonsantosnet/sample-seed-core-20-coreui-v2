@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -6,6 +6,7 @@ import { ViewModel } from '../../../common/model/viewmodel';
 import { <#className#>Service } from '../<#classNameLowerAndSeparator#>.service';
 import { LocationHistoryService } from '../../../common/services/location.history';
 import { ComponentBase } from "../../../common/components/component.base";
+import { GlobalService, NotificationParameters } from '../../../global.service';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>-create',
@@ -15,6 +16,12 @@ import { ComponentBase } from "../../../common/components/component.base";
 export class <#className#>CreateComponent extends ComponentBase implements OnInit, OnDestroy {
 
     @Input() vm: ViewModel<any>;
+    @Input() parentIdValue: any;
+    @Input() parentIdField: string;
+    @Input() isParent: boolean;
+    @Output() saveEnd = new EventEmitter<any>();
+    @Output() backEnd = new EventEmitter<any>();
+
  
     constructor(private <#classNameInstance#>Service: <#className#>Service, private route: ActivatedRoute, private router: Router, private ref: ChangeDetectorRef) {
         super();
@@ -38,11 +45,17 @@ export class <#className#>CreateComponent extends ComponentBase implements OnIni
 
     onSave(model : any) {
 
-        this.<#classNameInstance#>Service.save(model).subscribe((result) => {
+            this.<#classNameInstance#>Service.save(model).subscribe((result) => {
             this.vm.model.<#KeyNameCamelCase#> = result.data.<#KeyNameCamelCase#>;
+            this.saveEnd.emit();
             if (!this.vm.manterTelaAberta)
                 this.router.navigate([LocationHistoryService.getLastNavigation()])
         });
+    }
+
+    onBack(e: any) {
+        e.preventDefault();
+        this.backEnd.emit();
     }
 
     ngOnDestroy() {

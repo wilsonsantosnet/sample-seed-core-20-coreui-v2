@@ -1,13 +1,13 @@
 <div class="row">
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.sampleId.label }}</label>
+      <label>{{ vm.infos | traduction:'sampleId'}}</label>
       <select class='form-control'  name='sampleId' [(ngModel)]='vm.modelFilter.sampleId' datasource [dataitem]="'Sample'" [fieldFilterName]="'Name'"></select>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.productId.label }}</label>
+      <label>{{ vm.infos | traduction:'productId'}}</label>
       <select class='form-control'  name='productId' [(ngModel)]='vm.modelFilter.productId' datasource [dataitem]="'Product'" [fieldFilterName]="'Name'"></select>
     </div>
   </section>

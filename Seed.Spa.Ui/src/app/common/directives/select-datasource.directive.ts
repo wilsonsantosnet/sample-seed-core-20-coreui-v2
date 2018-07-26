@@ -49,6 +49,11 @@ export class DataSourceDirective implements OnInit, OnDestroy {
         this.init();
       }
 
+      if (not.event == "clear") {
+        if (not.data.dataitem == this.dataitem) 
+          this.init();
+      }
+
       if (not.event == "change") {
         if (not.data.dataitem == this.dataitem) {
           this.datasource(this._elemetRef.nativeElement, not.data.parentFilter);

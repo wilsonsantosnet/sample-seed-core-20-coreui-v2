@@ -40,8 +40,8 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     ngOnInit() {
 
         this.vm = this.<#classNameInstance#>Service.initVM();
-        
-		this.configurationForParent();
+        this.configurationForParent();
+
         if (this.parentIdValue) 
             this.vm.modelFilter[this.parentIdField] = this.parentIdValue;
 
@@ -59,9 +59,7 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
             this.updateCulture(culture);
         });
 
-        if (this._navigatioModal)
-            LocationHistoryService.saveLocal("<#classNameLower#>");
-
+    
         this.vm.isParent = this.isParent;
         this.vm.ParentIdField = this.parentIdField;
     }
@@ -111,10 +109,10 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         this.showContainerCreate();
 
         this.vm.model = {};
-        
-		if (this.parentIdValue)
+        if (this.parentIdValue)
             this.vm.model[this.parentIdField] = this.parentIdValue;
-        this.navigateStrategy(this.saveModal, this.router, "/<#classNameLower#>/create");
+
+        this.navigateStrategy(this.vm, this.saveModal, this.router, "/<#classNameLower#>/create");
     }
 
     public onEdit(model: any) {
@@ -125,8 +123,8 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
             newModel = <#ParametersKeyNamesModel#>
         }
 
-        if (!this._navigatioModal) {
-            this.navigateStrategy(this.editModal, this.router, "/<#classNameLower#>/edit/" + newModel.id);
+        if (!this.vm.navigationModal) {
+            this.navigateStrategy(this.vm, this.editModal, this.router, "/<#classNameLower#>/edit/" + newModel.id);
         }
         else {
             this.<#classNameInstance#>Service.get(newModel).subscribe((result) => {
@@ -169,8 +167,8 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
             newModel = <#ParametersKeyNamesModel#>
         }
 		
-        if (!this._navigatioModal) {
-            this.navigateStrategy(this.editModal, this.router, "/<#classNameLower#>/details/" + newModel.id);
+        if (!this.vm.navigationModal) {
+            this.navigateStrategy(this.vm, this.editModal, this.router, "/<#classNameLower#>/details/" + newModel.id);
         }
         else {
             this.<#classNameInstance#>Service.get(newModel).subscribe((result) => {

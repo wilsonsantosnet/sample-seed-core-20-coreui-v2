@@ -13,15 +13,15 @@ using System.Threading.Tasks;
 namespace Seed.Api.Controllers
 {
     [Authorize]
-    [Route("api/document/uploadbase64")]
-    public class UplaodBase64Controller : Controller
+    [Route("api/document/upload")]
+    public class UplaodController : Controller
     {
 
         private readonly ILogger _logger;
         private readonly IHostingEnvironment _env;
         private readonly string _uploadRoot;
 
-        public UplaodBase64Controller(ILoggerFactory logger, IHostingEnvironment env)
+        public UplaodController(ILoggerFactory logger, IHostingEnvironment env)
         {
             this._logger = logger.CreateLogger<UplaodController>();
             this._env = env;
@@ -29,7 +29,7 @@ namespace Seed.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(string base64, string fileName, string folder, bool rename = true)
+        public async Task<IActionResult> Post(ICollection<IFormFile> files, string folder, bool rename = true)
         {
             var result = new HttpResult<List<string>>(this._logger);
             try
@@ -40,13 +40,22 @@ namespace Seed.Api.Controllers
 
                 var fileSuccess = new List<string>();
 
-                if (rename)
-                    fileName = string.Format("{0}{1}", Guid.NewGuid().ToString(), Path.GetExtension(fileName));
+                foreach (var file in files)
+                {
+                    if (file.Length > 0)
+                    {
+                        var fileName = file.FileName;
+                        if (rename)
+                            fileName = string.Format("{0}{1}", Guid.NewGuid().ToString(), Path.GetExtension(file.FileName));
 
-                var fileBytes = Convert.FromBase64String(base64);
-                await System.IO.File.WriteAllBytesAsync(fileName, fileBytes); 
+                        using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
+                        fileSuccess.Add(fileName);
+                    }
+                }
 
-                fileSuccess.Add(fileName);
                 return result.ReturnCustomResponse(fileSuccess);
             }
             catch (Exception ex)

@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { SampleTypeService } from '../sampletype.service';
 
 import { ViewModel } from '../../../common/model/viewmodel';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { GlobalService, NotificationParameters } from '../../../global.service';
 
 @Component({
     selector: 'app-sampletype-field-create',
@@ -10,15 +12,23 @@ import { ViewModel } from '../../../common/model/viewmodel';
 })
 export class SampleTypeFieldCreateComponent implements OnInit {
 
-    @Input() vm: ViewModel<any>;
-
+   @Input() vm: ViewModel<any>;
 
    constructor(private sampleTypeService: SampleTypeService, private ref: ChangeDetectorRef) { }
 
-    ngOnInit() {}
+   ngOnInit() {}
+
 
     ngOnChanges() {
        this.ref.detectChanges()
+    }
+
+    onSaveEnd(model: any) {
+       
+    }
+
+    onBackEnd(model: any) {
+       
     }
 
    

@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
-
+import { Component, OnInit, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { SampleStandartService } from '../samplestandart.service';
 
 import { ViewModel } from '../../../common/model/viewmodel';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'app-samplestandart-field-edit',
@@ -16,10 +16,18 @@ export class SampleStandartFieldEditComponent implements OnInit {
 
     constructor(private sampleStandartService: SampleStandartService, private ref: ChangeDetectorRef) { }
 
-    ngOnInit() { }
+    ngOnInit() {}
 
     ngOnChanges() {
        this.ref.detectChanges()
+    }
+
+    onSaveEnd(model: any) {
+       
+    }
+
+    onBackEnd(model: any) {
+       
     }
 
         

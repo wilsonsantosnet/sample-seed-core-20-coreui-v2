@@ -1,9 +1,9 @@
 <dl>
-    <dt>{{ vm.infos.sampleId.label }}:</dt>
+    <dt>{{ vm.infos | traduction: 'sampleId' }}:</dt>
     <dd><bind-custom [model]="vm.details.sampleId" [format]="'int'" [tag]="'span'" ></bind-custom></dd>
  
 
-    <dt>{{ vm.infos.productId.label }}:</dt>
+    <dt>{{ vm.infos | traduction: 'productId' }}:</dt>
     <dd><bind-custom [model]="vm.details.productId" [format]="'int'" [tag]="'span'" ></bind-custom></dd>
  
 

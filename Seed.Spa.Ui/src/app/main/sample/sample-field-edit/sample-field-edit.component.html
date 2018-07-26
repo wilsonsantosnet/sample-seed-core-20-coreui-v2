@@ -13,26 +13,14 @@
 	<div class="row">
 		  <section class="col-md-6">
     <div class='form-group' *ngIf="!vm.isParent || vm.ParentIdField != 'sampleId'">
-      <label class='mr-1'>{{ vm.infos.sampleId.label }}</label> <a href="#" data-toggle="modal" data-target="#samplestandart" title="{{vm.generalInfo.novoItem.label}}"><i class="fa fa-plus-circle"></i></a>
+      <label class='mr-1'>{{ vm.infos | traduction:'sampleId' }}</label> <a href="#" data-toggle="modal" (click)="$event.preventDefault();appsamplestandartcreateModal.show()" title="{{vm.generalInfo.novoItem.label}}"><i class="fa fa-plus-circle"></i></a>
         <select class='form-control'  name='sampleId' [(ngModel)]='vm.model.sampleId' required formControlName='sampleId' datasource [dataitem]="'SampleStandart'" [fieldFilterName]="'Name'" [datafilters]="{AttributeBehavior:'withoutchild'}" ></select>
       </div>
-        <div class="modal fade" id="samplestandart">
+        <div bsModal #appsamplestandartcreateModal="bs-modal" class="modal fade" id="appsamplestandartcreateModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Sample Standart</h4>
-        <button type="button" class="close pull-right" aria-label="Close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div class="modal-body pre-scrollable">
-        <app-samplestandart></app-samplestandart>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-default " type="button" data-dismiss="modal" >
-          <i class="icon-close icons"></i>
-          {{vm.generalInfo.cancelar.label}}
-        </button>
+        <app-samplestandart-create [isParent]="'true'"  (saveEnd)="onSaveEnd($event)" (backEnd)="onBackEnd($event)"></app-samplestandart-create>
       </div>
     </div>
   </div>
@@ -41,13 +29,13 @@
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.name.label }}</label>
+      <label>{{ vm.infos | traduction:'name' }}</label>
       <input type='text' class='form-control' [(ngModel)]='vm.model.name' name='name' required formControlName='name'    maxlength=50 autocomplete='off'/>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.valor.label }}</label>
+      <label>{{ vm.infos | traduction:'valor' }}</label>
       <input type='text' class='form-control' [(ngModel)]='vm.model.valor' name='valor'  formControlName='valor' maskm   autocomplete='off'/>
     </div>
   </section>
@@ -58,57 +46,57 @@
 	<div class="row">
 		  <section class="col-md-12">
     <div class='form-group'>
-      <label>{{ vm.infos.descricao.label }}</label>
+      <label>{{ vm.infos | traduction:'descricao' }}</label>
       <textarea class='form-control'  [(ngModel)]='vm.model.descricao' name='descricao'  rows='5' formControlName='descricao' ></textarea>
     </div>
   </section>
   <section class="col-md-12">
     <div class='form-group'>
-      <label>{{ vm.infos.tags.label }}</label>
+      <label>{{ vm.infos | traduction:'tags' }}</label>
       <textarea class='form-control'  [(ngModel)]='vm.model.tags' name='tags'  rows='5' formControlName='tags' ></textarea>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.telefone.label }}</label>
+      <label>{{ vm.infos | traduction:'telefone' }}</label>
       <input type='text' class='form-control' [(ngModel)]='vm.model.telefone' name='telefone'  formControlName='telefone'  [textMask]='{ mask: vm.masks.maskTelefone }'  maxlength=20 autocomplete='off'/>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.cpf.label }}</label>
+      <label>{{ vm.infos | traduction:'cpf' }}</label>
       <input type='text' class='form-control' [(ngModel)]='vm.model.cpf' name='cpf'  formControlName='cpf'  [textMask]='{ mask: vm.masks.maskCPF }'  maxlength=20 autocomplete='off'/>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.datetime.label }}</label>
+      <label>{{ vm.infos | traduction:'datetime' }}</label>
       <input type='text' class='form-control' [(ngModel)]='vm.model.datetime' name='datetime'  formControlName='datetime' datetimepicker autocomplete='off'/>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group' *ngIf="!vm.isParent || vm.ParentIdField != 'sampleTypeId'">
-      <label class='mr-1'>{{ vm.infos.sampleTypeId.label }}</label> 
+      <label class='mr-1'>{{ vm.infos | traduction:'sampleTypeId' }}</label> 
         <select class='form-control'  name='sampleTypeId' [(ngModel)]='vm.model.sampleTypeId' required formControlName='sampleTypeId' datasource [dataitem]="'SampleType'" [fieldFilterName]="'Name'"  ></select>
       </div>
         
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.age.label }}</label>
+      <label>{{ vm.infos | traduction:'age' }}</label>
       <input type='text' class='form-control' [(ngModel)]='vm.model.age' name='age'  formControlName='age'  maski='9999999999'  autocomplete='off'/>
     </div>
   </section>
   <section class="col-md-6">
     <div class='form-group'>
-      <label>{{ vm.infos.category.label }}</label>
+      <label>{{ vm.infos | traduction:'category' }}</label>
       <input type='text' class='form-control' [(ngModel)]='vm.model.category' name='category'  formControlName='category'  maski='9999999999'  autocomplete='off'/>
     </div>
   </section>
   <section class="col-md-6">
     <div class='checkbox pt-4'>
       <label>
-          <input type='checkbox'  [(ngModel)]='vm.model.ativo'  name='ativo' formControlName='ativo' /> {{ vm.infos.ativo.label }}?
+          <input type='checkbox'  [(ngModel)]='vm.model.ativo'  name='ativo' formControlName='ativo'  /> {{ vm.infos | traduction:"ativo" }}?
       </label>
     </div>
   </section>
@@ -117,13 +105,13 @@
 
 <div class="tab-pane fade show " id="v-pills-SampleDetail" role="tabpanel" aria-labelledby="v-pills-SampleDetail-tab">
 	<div class="m-0 p-0">
-		<app-sampledetail [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' ></app-sampledetail>
+		<app-sampledetail [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async'  ></app-sampledetail>
 	</div>
 </div>
 
 <div class="tab-pane fade show " id="v-pills-SampleProduct" role="tabpanel" aria-labelledby="v-pills-SampleProduct-tab">
 	<div class="m-0 p-0">
-		<app-sampleproduct [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async' ></app-sampleproduct>
+		<app-sampleproduct [parentIdValue]='vm.model.sampleId' [parentIdField]="'sampleId'" [isParent]="'true'" *ngIf='vm.model.sampleId | existsRequest:"Sample" | async'  ></app-sampleproduct>
 	</div>
 </div>
 

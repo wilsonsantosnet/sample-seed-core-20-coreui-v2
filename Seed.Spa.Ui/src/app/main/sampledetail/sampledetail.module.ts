@@ -28,6 +28,7 @@ import { SampleDetailServiceFields } from './sampledetail.service.fields';
 import { ApiService } from '../../common/services/api.service';
 import { CommonSharedModule } from '../../common/common-shared.module';
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -36,7 +37,8 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         ModalModule.forRoot(),
         CommonSharedModule,
         SampleDetailRoutingModule,
-        SampleDetailPrintModule
+        SampleDetailPrintModule,
+
     ],
     declarations: [
         SampleDetailComponent,
@@ -51,7 +53,7 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         SampleDetailContainerEditComponent
     ],
     providers: [SampleDetailService,SampleDetailServiceFields, ApiService],
-	exports: [SampleDetailComponent]
+	exports: [SampleDetailComponent, SampleDetailEditComponent, SampleDetailCreateComponent]
 })
 export class SampleDetailModule {
 
